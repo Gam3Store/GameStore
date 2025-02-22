@@ -17,9 +17,14 @@ tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
 
-dependencies {
-    classpath 'com.google.gms:google-services:4.3.10'
-}
+//dependencies {
+//    classpath 'com.google.gms:google-services:4.3.10'
+//}
 
-
-
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//}

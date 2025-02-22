@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:gamestore/gamestore.dart';
-import 'package:gamestore/pages/carrinho_page.dart';
 import 'package:gamestore/pages/home_page.dart';
 import 'package:gamestore/pages/login_page.dart';
-import 'package:gamestore/pages/detalhes_jogo.dart'; // Importando a tela de detalhes
 import 'package:gamestore/services/auth_service.dart';
-import 'package:gamestore/services/carrinho_provider.dart';
 import 'package:gamestore/widgets/auth_check.dart';
 import 'package:provider/provider.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,39 +16,17 @@ void main() async {
         apiKey: "AIzaSyApKru4p-5j8_gdh5_Le94goQ3ZiGmPUAA",
         appId: "1:648935487217:web:046b547bca875d0c74db50",
         messagingSenderId: "648935487217", 
-        projectId: "gamestore-d09d6")
+        projectId:  "gamestore-d09d6")
   );
 
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => AuthService()),
-        ChangeNotifierProvider(create: (context) => CarrinhoProvider()),
+        ChangeNotifierProvider(create: (context) => AuthService())
       ],
-      child: const Gamestore(),
-    ),
-  );
+      child: Gamestore(),
+  ));
 }
-
-class Gamestore extends StatelessWidget {
-  const Gamestore({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const AuthCheck(),
-        '/home': (context) => const HomePage(),
-        '/login': (context) => const LoginPage(),
-        '/detalhes_jogo': (context) => DetalhesJogo(), // Adicionando a rota da página de detalhes
-        '/carrinho': (context) => CarrinhoPage(),
-      },
-    );
-  }
-}
-
 
 
 //class Gamestore extends StatefulWidget {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "181672934842",
+    "project_id": "gamestore-610b1",
+    "storage_bucket": "gamestore-610b1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181672934842:android:8d164b587aaabd225e7183",
+        "android_client_info": {
+          "package_name": "com.example.gamestore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuF0OkKNl9T1CJjTMxu84DMHqTBYiie6k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,7 +3,7 @@ import 'package:gamestore/pages/home_page.dart';
 import 'package:gamestore/widgets/auth_check.dart';
 
 class Gamestore extends StatelessWidget{
-  const Gamestore({super.key});
+  const Gamestore({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

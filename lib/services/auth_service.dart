@@ -7,7 +7,7 @@ class AuthException implements Exception {
 }
 
 class AuthService extends ChangeNotifier {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseAuth _auth = FirebaseAuth.instance;
   User? usuario;
   bool isLoading = true;
 
@@ -33,11 +33,18 @@ class AuthService extends ChangeNotifier {
 
 
   registrar(String email, String senha) async {
+
+    final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+
+    if (!emailRegex.hasMatch(email)) {
+      throw AuthException('Insira um email válido.');
+    }
+
     try{
       await _auth.createUserWithEmailAndPassword(email: email, password: senha);
       _getUser();
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'week-password') {
+      if (e.code == 'weak-password') {
         throw AuthException('A senha é muito fraca!');
       } else if (e.code == 'email-already-in-use'){
         throw AuthException('Este email já está cadastrado!');
@@ -51,11 +58,9 @@ class AuthService extends ChangeNotifier {
       await _auth.signInWithEmailAndPassword(email: email, password: senha);
       _getUser();
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        throw AuthException('Email não foi encontrado. Cadastre-se.');
-      } else if (e.code == 'wrong-password'){
-        throw AuthException('Senha incorreta. Tente novamente!');
-      }
+      if (e.code == 'invalid-credential'){
+        throw AuthException('Senha ou Email incorretos. Tente novamente!');
+      } 
     }
   }
 
