@@ -68,6 +68,12 @@ class _HomePageState extends State<HomePage> {
               // Adicione uma ação aqui, como abrir uma tela de perfil
             },
           ),
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.pushNamed(context, '/carrinho');
+            },
+          ),
         ],
       ),
       body: Column(
